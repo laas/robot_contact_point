@@ -1,0 +1,20 @@
+<package>
+  <description brief="Robot Contact Point Description Format parser">
+
+    Robot Contact Point Description Format interfaces parser.
+
+  </description>
+  <author>Thomas Moulard/thomas.moulard@gmail.com</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rcpdf</url>
+
+  <export>
+    <cpp cflags="-I${prefix}/include"/>
+  </export>
+
+  <depend package="urdf_interface" />
+  <depend package="rcpdf_interface" />
+
+  <rosdep name="tinyxml" />
+</package>

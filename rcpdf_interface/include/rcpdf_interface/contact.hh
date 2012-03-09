@@ -3,11 +3,14 @@
 # include <string>
 # include <boost/shared_ptr.hpp>
 
+# include <ros/ros.h>
+# include <urdf_interface/link.h>
 # include <urdf_interface/pose.h>
 
 namespace rcpdf_interface
 {
   typedef ::urdf::Geometry Geometry;
+  typedef ::urdf::Pose Pose;
 
   class Limit
   {
@@ -39,8 +42,8 @@ namespace rcpdf_interface
 
     Pose origin_;
 
-    boost::shared_ptr<Geometry> geometry;
-    boost::shared_ptr<Limit> limit;
+    boost::shared_ptr<Geometry> geometry_;
+    boost::shared_ptr<Limit> limit_;
 
     void clear()
     {

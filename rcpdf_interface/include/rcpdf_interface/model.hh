@@ -4,19 +4,18 @@
 # include <vector>
 # include <boost/shared_ptr.hpp>
 
+# include <rcpdf_interface/contact.hh>
 
 namespace rcpdf_interface
 {
-  typedef ::urdf::Geometry Geometry;
-
   class ModelInterface
   {
   public:
-    explicit Model ()
+    explicit ModelInterface ()
       : name_(),
 	contacts_()
     {}
-    ~ Model ()
+    ~ ModelInterface ()
     {}
 
     std::string name_;
