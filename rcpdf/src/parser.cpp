@@ -66,8 +66,7 @@ namespace rcpdf
 
       // Get maximum normal force.
       const char* normal_force = limit_element->Attribute("normal_force");
-      if (!normal_force)
-	limit->normal_force_ = boost::lexical_cast<double>(normal_force);
+      limit->normal_force_ = boost::lexical_cast<double>(normal_force);
       return limit;
     }
 
@@ -120,8 +119,7 @@ namespace rcpdf
 	  contact.reset();
 	  return contact;
 	}
-      boost::shared_ptr< ::urdf::Geometry> geometry =
-	parseGeometry(geometry_xml);
+      contact->geometry_ = parseGeometry(geometry_xml);
 
       // Parse limit.
       TiXmlElement* limit_xml = contact_xml->FirstChildElement("limit");

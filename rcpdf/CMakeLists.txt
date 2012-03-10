@@ -12,3 +12,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 rosbuild_add_boost_directories()
 rosbuild_add_library(${PROJECT_NAME} src/parser.cpp)
+target_link_libraries(${PROJECT_NAME} tinyxml)
+
+rosbuild_add_executable(check_rcpdf src/check_rcpdf.cpp)
+target_link_libraries(check_rcpdf ${PROJECT_NAME})
