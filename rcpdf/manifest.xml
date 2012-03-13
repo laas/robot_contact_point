@@ -10,8 +10,8 @@
   <url>http://ros.org/wiki/rcpdf</url>
 
   <export>
-    <cpp cflags="-I${prefix}/include"
-	 ldflags="-L${prefix}/lib -lrcpdf -Wl,-rpath=${prefix}/lib" />
+    <cpp cflags="-I${prefix}/include `rosboost-cfg --cflags`"
+	 ldflags="-L${prefix}/lib -lrcpdf -Wl,-rpath,${prefix}/lib" />
   </export>
 
   <depend package="urdf" />
