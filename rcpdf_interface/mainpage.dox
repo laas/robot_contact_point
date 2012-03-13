@@ -2,25 +2,17 @@
 \mainpage
 \htmlinclude manifest.html
 
-\b rcpdf_interface is ... 
+\b rcpdf_interface defines a C++ interface storing contact zones
+information for a robot. This is the C++ equivalent of the Robot
+Contact Point Description format.
 
-<!-- 
-Provide an overview of your package.
--->
-
+This package does not include a RCPDF parser. The RCPDF parser
+provides the default parser.
 
 \section codeapi Code API
 
-<!--
-Provide links to specific auto-generated API documentation within your
-package that is of particular interest to a reader. Doxygen will
-document pretty much every part of your code, so do your best here to
-point the reader to the actual API.
-
-If your codebase is fairly large or has different sets of APIs, you
-should use the doxygen 'group' tag to keep these APIs together. For
-example, the roscpp documentation has 'libros' group.
--->
-
+The main class of this package is
+rcpdf_interface::ModelInterface. This is the structure which stores
+the contact zones.
 
 */
