@@ -11,7 +11,7 @@
 
   <export>
     <cpp cflags="-I${prefix}/include `rosboost-cfg --cflags`"
-	 ldflags="-L${prefix}/lib -lrcpdf -Wl,-rpath,${prefix}/lib" />
+	 lflags="-L${prefix}/lib -lrcpdf -Wl,-rpath,${prefix}/lib" />
   </export>
 
   <depend package="urdf" />
