@@ -1,3 +1,5 @@
 rcpdf/lib/
 rcpdf/bin/
+rcpdf/build/
+rcpdf_interface/build/
 
