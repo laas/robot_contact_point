@@ -10,6 +10,7 @@
   <url>http://ros.org/wiki/rcpdf</url>
 
   <export>
+    <rosdoc config="rosdoc.yaml" />
     <cpp cflags="-I${prefix}/include `rosboost-cfg --cflags`"
 	 lflags="-L${prefix}/lib -lrcpdf -Wl,-rpath,${prefix}/lib" />
   </export>
