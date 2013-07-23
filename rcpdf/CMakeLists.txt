@@ -1,18 +1,53 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8)
 
-set(ROS_BUILD_TYPE RelWithDebInfo)
+SET(PROJECT_NAME rcpdf)
+SET(PROJECT_DESCRIPTION
+  "Robot Contact Point Description Format interfaces parser"
+  )
+SET(PROJECT_URL github.com/laas/robot_contact_point)
+SET(PROJECT_VERSION 0.2)
 
-rosbuild_init()
+INCLUDE(cmake/base.cmake)
+INCLUDE(cmake/cpack.cmake)
+INCLUDE(cmake/boost.cmake)
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+SET(${PROJECT_NAME}_HEADERS
+  include/rcpdf/parser.hh
+  )
 
-rosbuild_add_boost_directories()
-rosbuild_add_library(${PROJECT_NAME} src/parser.cpp)
-target_link_libraries(${PROJECT_NAME} tinyxml)
+SETUP_PROJECT()
 
-rosbuild_add_executable(check_rcpdf src/check_rcpdf.cpp)
-target_link_libraries(check_rcpdf ${PROJECT_NAME})
+SEARCH_FOR_BOOST()
+ADD_REQUIRED_DEPENDENCY("urdf >= 1.9")
+ADD_REQUIRED_DEPENDENCY("urdfdom >= 0.2")
+ADD_REQUIRED_DEPENDENCY("urdfdom_headers >= 0.2")
+ADD_REQUIRED_DEPENDENCY("rcpdf_interface >= 0.2")
+ADD_REQUIRED_DEPENDENCY("tinyxml >= 2.6")
+
+SET(LIBRARY_NAME ${PROJECT_NAME})
+ADD_LIBRARY(${LIBRARY_NAME} SHARED
+  src/parser.cpp
+  )
+
+PKG_CONFIG_USE_DEPENDENCY(${LIBRARY_NAME} tinyxml)
+PKG_CONFIG_USE_DEPENDENCY(${LIBRARY_NAME} urdf)
+PKG_CONFIG_USE_DEPENDENCY(${LIBRARY_NAME} urdfdom)
+PKG_CONFIG_USE_DEPENDENCY(${LIBRARY_NAME} urdfdom_headers)
+PKG_CONFIG_USE_DEPENDENCY(${LIBRARY_NAME} rcpdf_interface)
+
+PKG_CONFIG_APPEND_LIBS(${LIBRARY_NAME})
+
+INSTALL(TARGETS ${LIBRARY_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+SET(PROGRAM_NAME check_rcpdf)
+ADD_EXECUTABLE(${PROGRAM_NAME} src/check_rcpdf.cpp)
+TARGET_LINK_LIBRARIES(${PROGRAM_NAME} ${PROJECT_NAME})
+PKG_CONFIG_USE_DEPENDENCY(${PROGRAM_NAME} tinyxml)
+PKG_CONFIG_USE_DEPENDENCY(${PROGRAM_NAME} urdf)
+PKG_CONFIG_USE_DEPENDENCY(${PROGRAM_NAME} urdfdom)
+PKG_CONFIG_USE_DEPENDENCY(${PROGRAM_NAME} urdfdom_headers)
+PKG_CONFIG_USE_DEPENDENCY(${PROGRAM_NAME} rcpdf_interface)
+INSTALL(TARGETS check_rcpdf DESTINATION ${CMAKE_INSTALL_PKGLIBDIR})
+
+SETUP_PROJECT_FINALIZE()
+SETUP_PROJECT_CPACK()

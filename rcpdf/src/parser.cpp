@@ -6,7 +6,7 @@
 
 #include <ros/console.h>
 
-#include "urdf_interface/link.h"
+#include "urdf_model/link.h"
 #include "rcpdf_interface/contact.hh"
 #include "rcpdf_interface/model.hh"
 #include "rcpdf/parser.hh"
@@ -21,9 +21,9 @@ namespace rcpdf
   
   namespace
   {
-    boost::shared_ptr<Geometry> parseGeometry(TiXmlElement *g)
+    boost::shared_ptr<rcpdf_interface::Geometry> parseGeometry(TiXmlElement *g)
     {
-      boost::shared_ptr<Geometry> geom;
+      boost::shared_ptr<rcpdf_interface::Geometry> geom;
       if (!g) return geom;
 
       TiXmlElement *shape = g->FirstChildElement();
@@ -47,12 +47,6 @@ namespace rcpdf
 	  ROS_ERROR("Unknown geometry type '%s'", type_name.c_str());
 	  return geom;
 	}
-
-      // clear geom object when fails to initialize
-      if (!geom->initXml(shape)){
-	ROS_ERROR("Geometry failed to parse");
-	geom.reset();
-      }
 
       return geom;
     }
@@ -101,12 +95,6 @@ namespace rcpdf
       if (!origin_xml)
 	{
 	  ROS_ERROR("No origin for the contact.");
-	  contact.reset();
-	  return contact;
-	}
-      if (!contact->origin_.initXml(origin_xml))
-	{
-	  ROS_ERROR("Contact has a malformed origin tag");
 	  contact.reset();
 	  return contact;
 	}

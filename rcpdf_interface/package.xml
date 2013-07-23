@@ -1,4 +1,5 @@
 <package>
+  <name>rcpdf_interface</name>
   <description brief="Robot Contact Point Description Format interfaces">
 
     Robot Contact Point Description Format interfaces definition.

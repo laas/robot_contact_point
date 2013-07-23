@@ -1,0 +1,6 @@
+[submodule "rcpdf/cmake"]
+	path = rcpdf/cmake
+	url = https://github.com/jrl-umi3218/jrl-cmakemodules.git
+[submodule "rcpdf_interface/cmake"]
+	path = rcpdf_interface/cmake
+	url = https://github.com/jrl-umi3218/jrl-cmakemodules.git

@@ -4,8 +4,8 @@
 # include <boost/shared_ptr.hpp>
 
 # include <ros/ros.h>
-# include <urdf_interface/link.h>
-# include <urdf_interface/pose.h>
+# include <urdf_model/link.h>
+# include <urdf_model/pose.h>
 
 namespace rcpdf_interface
 {
