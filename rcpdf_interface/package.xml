@@ -1,23 +1,24 @@
 <package>
   <name>rcpdf_interface</name>
-  <description brief="Robot Contact Point Description Format interfaces">
+  <description>
 
     Robot Contact Point Description Format interfaces definition.
 
     Define the model structure (contacts and model) as C++ classes.
 
   </description>
+  <maintainer email="thomas.moulard@gmail.com">Thomas Moulard</maintainer>
   <author>Thomas Moulard/thomas.moulard@gmail.com</author>
   <license>BSD</license>
-  <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/rcpdf_interface</url>
+  <version>0.2.0</version>
 
   <export>
     <rosdoc config="rosdoc.yaml" />
     <cpp cflags="-I${prefix}/include `rosboost-cfg --cflags`"/>
   </export>
 
-  <depend package="roscpp" />
-  <depend package="urdf_interface" />
-  <rosdep name="boost"/>
+  <build_depend>roscpp</build_depend>
+  <build_depend>urdf_interface</build_depend>
+  <build_depend>boost</build_depend>
 </package>

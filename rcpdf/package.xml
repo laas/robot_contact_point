@@ -1,14 +1,14 @@
 <package>
   <name>rcpdf</name>
-  <description brief="Robot Contact Point Description Format parser">
+  <description>
 
     Robot Contact Point Description Format interfaces parser.
 
   </description>
-  <author>Thomas Moulard/thomas.moulard@gmail.com</author>
+  <maintainer email="thomas.moulard@gmail.com">Thomas Moulard</maintainer>
   <license>BSD</license>
-  <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/rcpdf</url>
+  <version>0.2.0</version>
 
   <export>
     <rosdoc config="rosdoc.yaml" />
@@ -16,10 +16,10 @@
 	 lflags="-L${prefix}/lib -lrcpdf -Wl,-rpath,${prefix}/lib" />
   </export>
 
-  <depend package="urdf" />
-  <depend package="urdf_interface" />
-  <depend package="rcpdf_interface" />
+  <build_depend>urdf</build_depend>
+  <build_depend>urdf_interface</build_depend>
+  <build_depend>rcpdf_interface</build_depend>
 
-  <rosdep name="boost" />
-  <depend name="tinyxml" />
+  <build_depend>boost</build_depend>
+  <build_depend>tinyxml</build_depend>
 </package>
